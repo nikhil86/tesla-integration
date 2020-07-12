@@ -21,10 +21,11 @@ async function setTemp(options) {
  console.log('attempting to start temperature set');
  const tempSetResult = await tjs.setTempsAsync(options, f2c(69), f2c(69));
  console.log(JSON.stringify(tempSetResult));
- 
- console.log('attempting to start seat heater');
- const seatHeatResult = await tjs.seatHeaterAsync(options,0,3);
- console.log(JSON.stringify(seatHeatResult));
+
+ // disable seat heater cuz its summer !!
+ // console.log('attempting to start seat heater');
+ // const seatHeatResult = await tjs.seatHeaterAsync(options,0,3);
+ // console.log(JSON.stringify(seatHeatResult));
 }
 
 function attemptToWakeUp(options) {
@@ -42,7 +43,9 @@ exports.teslaWarmUp = functions.https.onRequest((request, response) => {
    
    try {
     const vehicle = await tjs.vehicleAsync({ authToken: result.authToken });
- 
+    //return 200 response instead of making the client wait
+    response.send(200);
+
     console.log(JSON.stringify(vehicle));
     const options = { authToken: result.authToken, vehicleID: vehicle.id_s };
  
