@@ -73,24 +73,19 @@ exports.teslaWarmUp = functions.https.onRequest((request, response) => {
          return response.send(500);
         } else {
          await setTemp(options);
-         response.send(200);
         }
        } else {
         console.log('climate set initiated');
         await setTemp(options);
-        response.send(200);
        }
       } else {
        await setTemp(options);
-       response.send(200);
       }
      } else {
       await setTemp(options);
-      response.send(200);
      }
     } else {
      await setTemp(options);
-     response.send(200);
     }
     
    } catch(e) {
