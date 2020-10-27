@@ -19,13 +19,12 @@ async function setTemp(options) {
  console.log(JSON.stringify(climateResult));
  
  console.log('attempting to start temperature set');
- const tempSetResult = await tjs.setTempsAsync(options, f2c(69), f2c(69));
+ const tempSetResult = await tjs.setTempsAsync(options, f2c(71), f2c(71));
  console.log(JSON.stringify(tempSetResult));
 
- // disable seat heater cuz its summer !!
- // console.log('attempting to start seat heater');
- // const seatHeatResult = await tjs.seatHeaterAsync(options,0,3);
- // console.log(JSON.stringify(seatHeatResult));
+ console.log('attempting to start seat heater');
+ const seatHeatResult = await tjs.seatHeaterAsync(options,0,3);
+ console.log(JSON.stringify(seatHeatResult));
 }
 
 function attemptToWakeUp(options) {
